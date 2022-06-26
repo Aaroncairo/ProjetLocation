@@ -1,0 +1,26 @@
+<header class="bg-secondary">
+    <nav class="navbar container navbar-expand navbar-light mb-3">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="{{ path("home_index") }}" class="nav-link text-white">Accueil</a>
+            </li>
+            {% if app.user is null %}
+            <li class="nav-item">
+                <a href="{{ path("app_login")}}" class="nav-link text-info">Connexion</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+            <a href="{{ path("app_logout")}}" class="nav-link text-info">Deconnexion</a>
+            </li>
+            {% endif %}
+        </ul>
+
+        <ul class="navbar-nav ms-auto">
+        {% if is_granted("ROLE_ADMIN")%}
+            <li class="nav-item">
+                <a href="{{ path("vehicule_list") }}" class="nav-link text-white">Back Office</a>
+            </li>
+        {% endif %}
+        </ul>
+    </nav>
+</header>
